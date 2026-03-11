@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Music</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<label class="switch">
+		<input type="checkbox" id="dark-mode-toggle" />
+		<span class="slider"></span>
+	  </label>
+</head>
+  </a>
+<body>
+	<header id="header">
+		<h1>My Music</h1>
+        <a href="index.html"><span class="square-tab">
+			Home
+		<img class="tiedye-button" src='/Users/owenheidenreich/Documents/Blog/My Blog/assets/img/tiedye_button.jpeg' alt="Tiedye Button" />
+		</span></a>
+	</header>
+	<div class="video-container">
+		<div class="video-wrapper">
+			<video width="560" height="315" controls>
+				<source src="/Users/owenheidenreich/Downloads/IMG_7715 (1).mov" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+			<img class="video-thumbnail" id="video-thumbnail" src="/Users/owenheidenreich/Documents/Blog/cyan_mosaic.jpeg" alt="Video Thumbnail">
+		</div>
+	</div>
+
+	<script>
+		const videoThumbnail = document.getElementById('video-thumbnail');
+		const videoWrapper = document.querySelector('.video-wrapper');
+	  
+		videoWrapper.addEventListener('mouseenter', () => {
+		  setTimeout(() => {
+			videoThumbnail.style.pointerEvents = 'none';
+		  }, 500); // 500 milliseconds to match the CSS transition duration
+		});
+	  
+		videoWrapper.addEventListener('mouseleave', () => {
+		  videoThumbnail.style.pointerEvents = 'auto';
+		});
+	  </script>
+	<script src="darkmode.js"></script>
+</body>
+</html>

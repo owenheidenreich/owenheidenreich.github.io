@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2D Triangle Shooter – Owen's Web Dev Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <label class="switch" aria-label="Toggle dark mode">
+    <input type="checkbox" id="dark-mode-toggle" />
+    <span class="slider"></span>
+  </label>
+
+  <a href="index.html">
+    <span class="square-tab">
+      Home
+      <img class="tiedye-button" src="assets/img/tiedye_button.jpeg" alt="" />
+    </span>
+  </a>
+
+  <canvas id="dotCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('dotCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Make canvas fill the window
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const dotRadius = 5;
+    const numDots = 150;
+    const dots = [];
+    const projectiles = [];
+    const projectileRadius = 3;
+    const triangleSize = 25;
+
+    const triangle = {
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      rotation: 0,
+      sizeMultiplier: 1
+    };
+
+    for (let i = 0; i < numDots; i++) {
+      const x = Math.random() * (canvas.width - 2 * dotRadius) + dotRadius;
+      const y = Math.random() * (canvas.height - 2 * dotRadius) + dotRadius;
+      const speedX = Math.random() * 2 - 1;
+      const speedY = Math.random() * 2 - 1;
+      dots.push({ x, y, speedX, speedY });
+    }
+
+    function drawTriangle() {
+      const size = triangleSize * triangle.sizeMultiplier;
+      ctx.save();
+      ctx.translate(triangle.x, triangle.y);
+      ctx.rotate(triangle.rotation);
+      ctx.beginPath();
+      ctx.moveTo(0, -size / 2);
+      ctx.lineTo(size / 2, size / 2);
+      ctx.lineTo(-size / 2, size / 2);
+      ctx.closePath();
+      ctx.fillStyle = 'lime';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawDot(dot) {
+      ctx.beginPath();
+      ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
+      ctx.fillStyle = 'deepskyblue';
+      ctx.fill();
+    }
+
+    function drawProjectile(projectile) {
+      ctx.beginPath();
+      ctx.arc(projectile.x, projectile.y, projectileRadius, 0, Math.PI * 2);
+      ctx.fillStyle = 'red';
+      ctx.fill();
+    }
+
+    function checkCollision(dot, projectile) {
+      const dx = dot.x - projectile.x;
+      const dy = dot.y - projectile.y;
+      const distance = Math.hypot(dx, dy);
+      return distance <= dotRadius + projectileRadius;
+    }
+
+    function update() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      drawTriangle();
+
+      // Move dots
+      for (const dot of dots) {
+        dot.x += dot.speedX;
+        dot.y += dot.speedY;
+
+        if (dot.x <= dotRadius || dot.x >= canvas.width - dotRadius) {
+          dot.speedX = -dot.speedX;
+        }
+        if (dot.y <= dotRadius || dot.y >= canvas.height - dotRadius) {
+          dot.speedY = -dot.speedY;
+        }
+
+        drawDot(dot);
+      }
+
+      // Move projectiles
+      for (let i = projectiles.length - 1; i >= 0; i--) {
+        const projectile = projectiles[i];
+        projectile.x += projectile.speedX;
+        projectile.y += projectile.speedY;
+
+        // Remove off-screen projectiles
+        if (
+          projectile.x < 0 ||
+          projectile.x > canvas.width ||
+          projectile.y < 0 ||
+          projectile.y > canvas.height
+        ) {
+          projectiles.splice(i, 1);
+          continue;
+        }
+
+        drawProjectile(projectile);
+
+        // Check collisions with dots
+        for (let j = dots.length - 1; j >= 0; j--) {
+          const dot = dots[j];
+          if (checkCollision(dot, projectile)) {
+            dots.splice(j, 1);
+            projectiles.splice(i, 1);
+            triangle.sizeMultiplier *= 1.02;
+            break;
+          }
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    function shootProjectile() {
+      const angle = triangle.rotation;
+      const speedX = Math.cos(angle) * 8;
+      const speedY = Math.sin(angle) * 8;
+      projectiles.push({
+        x: triangle.x,
+        y: triangle.y,
+        speedX,
+        speedY
+      });
+    }
+
+    window.addEventListener('keydown', e => {
+      switch (e.key) {
+        case 'w':
+          triangle.y -= 5;
+          break;
+        case 'a':
+          triangle.x -= 5;
+          break;
+        case 's':
+          triangle.y += 5;
+          break;
+        case 'd':
+          triangle.x += 5;
+          break;
+        case 'ArrowLeft':
+          triangle.rotation -= 0.1;
+          break;
+        case 'ArrowRight':
+          triangle.rotation += 0.1;
+          break;
+        case ' ':
+          shootProjectile();
+          break;
+      }
+    });
+
+    update();
+  </script>
+
+  <script src="darkmode.js"></script>
+</body>
+</html>
