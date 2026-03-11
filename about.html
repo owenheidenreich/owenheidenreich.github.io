@@ -1,22 +1,246 @@
-<a href="blog.html#symbiosis" style="text-decoration: none;">
-  <div class="bubble">
-    <p>
-      I started this website as an experiment with ChatGPT on April 17th, 2023.
-      It began as a blog. I knew that this AI was capable of programming,
-      so I asked it to create a basic HTML webpage where I could host videos,
-      share pictures, or even embed little games...
-    </p>
-    <div class="tiedye-button"></div>
-  </div>
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – Owen's Web Dev Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .about-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 40px 16px 60px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
 
-<a href="blog.html#megacorps" style="text-decoration: none;">
-  <div class="bubble">
-    <p>
-      Reddit charging OpenAI for API access, Twitter API disputes, AI-generated
-      music lawsuits — megacorps and AI are colliding in a new kind of
-      information and trading warfare...
-    </p>
-    <div class="tiedye-button"></div>
-  </div>
-</a>
+    .project-card {
+      width: 100%;
+      padding: 28px 32px;
+      border: 2px solid rgba(0, 0, 0, 0.15);
+      border-radius: 14px;
+      background-color: #f1f1f1;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .project-card h2 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .project-card .subtitle {
+      font-size: 13px;
+      opacity: 0.6;
+      margin: 0 0 16px;
+    }
+
+    .project-card p {
+      font-size: 15px;
+      line-height: 1.65;
+      margin: 0 0 12px;
+    }
+
+    .project-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      opacity: 0.75;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #2196f3;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .project-link:hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+
+    /* Dark mode overrides */
+    body.dark-mode .project-card {
+      background-color: #1e1e1e;
+      border-color: #444;
+    }
+
+    body.dark-mode .project-link {
+      color: #64b5f6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark mode toggle -->
+  <label class="switch" aria-label="Toggle dark mode">
+    <input type="checkbox" id="dark-mode-toggle" />
+    <span class="slider"></span>
+  </label>
+
+  <!-- Header + nav -->
+  <header id="header" style="min-height: auto; padding: 40px 16px 20px;">
+    <h1><span>About</span></h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">
+        <span class="square-tab">
+          Home
+          <img class="tiedye-button" src="assets/img/tiedye_button.jpeg" alt="" />
+        </span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="about-grid">
+
+    <!-- Trinity AI -->
+    <article class="project-card">
+      <h2>Trinity AI</h2>
+      <p class="subtitle">Decentralized AI Chat Platform</p>
+      <p>
+        Trinity is a fully decentralized AI chat application built on the
+        Internet Computer (ICP). It pairs a React 19 frontend with a Rust-based
+        backend canister, delivering a ChatGPT-style conversational interface
+        that runs entirely on-chain with no centralized servers.
+      </p>
+      <p>
+        Users interact with AI models through a clean, responsive UI while
+        their session data lives on the decentralized web. The app supports
+        real-time streaming responses, dark mode, and persistent chat history
+        stored in canister memory.
+      </p>
+      <div class="tag-row">
+        <span class="tag">React 19</span>
+        <span class="tag">Rust</span>
+        <span class="tag">ICP</span>
+        <span class="tag">Flask</span>
+        <span class="tag">WebAssembly</span>
+      </div>
+      <a class="project-link" href="https://dubya.ai" target="_blank" rel="noopener noreferrer">Visit dubya.ai &rarr;</a>
+    </article>
+
+    <!-- Retro Arcade -->
+    <article class="project-card">
+      <h2>Retro Arcade</h2>
+      <p class="subtitle">Browser-Based Game Emulation Platform</p>
+      <p>
+        A full-featured retro gaming arcade that lets you play N64, NDS, and PSP
+        games directly in the browser. ROMs are served via signed URLs from
+        Supabase Storage and Cloudflare R2, while EmulatorJS handles emulation
+        with WASM-compiled RetroArch cores.
+      </p>
+      <p>
+        Features include cloud save sync (auto-uploads save files to the server
+        every 15 seconds), online multiplayer via WebRTC netplay, Bluetooth
+        controller support with per-game button remapping, and a guest mode for
+        quick demos without an account.
+      </p>
+      <div class="tag-row">
+        <span class="tag">Next.js 16</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Cloudflare R2</span>
+        <span class="tag">EmulatorJS</span>
+        <span class="tag">WebRTC</span>
+      </div>
+      <a class="project-link" href="https://dubya.ai/vidya" target="_blank" rel="noopener noreferrer">Visit dubya.ai/vidya &rarr;</a>
+    </article>
+
+    <!-- 2D Triangle Shooter -->
+    <article class="project-card">
+      <h2>2D Triangle Shooter</h2>
+      <p class="subtitle">Canvas-Based Arcade Game</p>
+      <p>
+        A lightweight browser game built with the HTML5 Canvas API. You control
+        a green triangle that rotates and fires projectiles at bouncing dots.
+        Each hit makes your triangle grow larger. Movement uses WASD, rotation
+        uses arrow keys, and spacebar shoots.
+      </p>
+      <p>
+        Built entirely in vanilla JavaScript with no dependencies — just raw
+        canvas drawing, collision detection, and a tight game loop running on
+        requestAnimationFrame.
+      </p>
+      <div class="tag-row">
+        <span class="tag">JavaScript</span>
+        <span class="tag">HTML5 Canvas</span>
+        <span class="tag">Game Loop</span>
+      </div>
+      <a class="project-link" href="game-2d.html">Play it &rarr;</a>
+    </article>
+
+    <!-- ThreeJS Demo -->
+    <article class="project-card">
+      <h2>ThreeJS Demo</h2>
+      <p class="subtitle">First-Person 3D Environment</p>
+      <p>
+        A first-person 3D corridor built with Three.js. Walk through a walled
+        hallway, dodge blue obstacles that slide toward you, and jump over them
+        with physics-based arc movement. Collision detection keeps you inside
+        the world boundaries and prevents you from walking through walls.
+      </p>
+      <p>
+        Demonstrates 3D scene composition, perspective camera controls, real-time
+        collision with bounding boxes, and procedurally spawned obstacles — all
+        running in WebGL with no build step required.
+      </p>
+      <div class="tag-row">
+        <span class="tag">Three.js</span>
+        <span class="tag">WebGL</span>
+        <span class="tag">3D Physics</span>
+        <span class="tag">Collision Detection</span>
+      </div>
+      <a class="project-link" href="game-3d.html">Play it &rarr;</a>
+    </article>
+
+    <!-- Markets -->
+    <article class="project-card">
+      <h2>Markets</h2>
+      <p class="subtitle">Live Financial Data Dashboard</p>
+      <p>
+        A real-time market dashboard powered by TradingView's embedded widget
+        API. Displays live ticker data for the S&amp;P 500, Nasdaq 100, EUR/USD,
+        Bitcoin, Ethereum, and Tesla — updating continuously during market hours.
+      </p>
+      <p>
+        A simple integration demonstrating how third-party financial widgets can
+        be embedded into a static site with minimal code while still delivering
+        a polished, real-time data experience.
+      </p>
+      <div class="tag-row">
+        <span class="tag">TradingView API</span>
+        <span class="tag">Financial Data</span>
+        <span class="tag">Real-Time</span>
+      </div>
+      <a class="project-link" href="stocks.html">View Markets &rarr;</a>
+    </article>
+
+  </main>
+
+  <script src="darkmode.js"></script>
+</body>
+</html>
