@@ -35,6 +35,8 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   padding: 24px 16px 8px;
   text-align: center;
 }
@@ -65,7 +67,18 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
+  max-width: 800px;
+}
+
+/* Featured project tabs (Trinity AI, Retro Arcade) */
+.featured-tab {
+  width: 320px;
+  height: 180px;
+  font-size: 26px;
+  font-weight: 600;
+  border-radius: 16px;
+  border-width: 3px;
 }
 
 /* Keep any nav-area links (home buttons on inner pages) nicely spaced */
