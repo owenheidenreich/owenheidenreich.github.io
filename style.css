@@ -72,7 +72,7 @@ a {
 }
 
 /* Featured project tabs (Trinity AI, Retro Arcade) */
-.featured-tab {
+.square-tab.featured-tab {
   width: 280px;
   height: 280px;
   font-size: 26px;
