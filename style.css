@@ -65,10 +65,23 @@ a {
 /* Nav bar under the title */
 #header nav {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Nav rows */
+.nav-row {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
-  max-width: 800px;
+}
+
+.nav-row-left {
+  align-self: flex-start;
 }
 
 /* Featured project tabs (Trinity AI, Retro Arcade) */
