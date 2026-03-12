@@ -35,10 +35,25 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   padding: 24px 16px 8px;
   text-align: center;
+}
+
+/* About button pinned to top-left */
+.about-corner {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+}
+
+.about-corner .square-tab {
+  width: auto;
+  height: auto;
+  padding: 10px 18px;
+  font-size: 16px;
 }
 
 /* Site title */
