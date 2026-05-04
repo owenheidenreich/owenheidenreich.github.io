@@ -17,9 +17,9 @@ Static GitHub Pages portfolio for quick employer review links.
 |---|---|---|
 | Trinity AI | Decentralized AI chat platform with React UI, ICP identity/canister work, Flask API, and Akash-hosted LLM inference. | https://dubya.ai |
 | Retro Arcade / N64 Web Arcade | Browser-based game library with guest auth, Supabase, Cloudflare R2 signed URLs, EmulatorJS, and WebRTC/netplay experiments. | https://n64-arcade.vercel.app/vidya |
-| LoopRunner | Android route planning and live run tracking app built with Expo and React Native. | GitHub README screenshots |
-| Autoresearch Trading | SPX 0DTE options research system focused on data integrity, leakage prevention, replay validation, and experiment governance. | GitHub README |
-| Bullet Gown Studio | Interactive Three.js fashion configurator for a high-concept ammunition-covered gown. | https://owenheidenreich.github.io/sea-urchin-parka/ |
+| Autoresearch Trading | SPX 0DTE options research system focused on data integrity, leakage prevention, replay validation, and experiment governance. | https://github.com/owenheidenreich/autoresearch-trading |
+| LoopRunner | Android route planning and live run tracking app built with Expo and React Native. | https://github.com/owenheidenreich/looprunner |
+| Bullet Parka Studio | Interactive Three.js fashion configurator for a sea-urchin-inspired parka. | https://github.com/owenheidenreich/sea-urchin-parka |
 
 ## Local Preview
 
