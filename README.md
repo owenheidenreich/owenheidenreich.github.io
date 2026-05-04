@@ -20,6 +20,7 @@ Static GitHub Pages portfolio for quick employer review links.
 | Autoresearch Trading | SPX 0DTE options research system focused on data integrity, leakage prevention, replay validation, and experiment governance. | https://github.com/owenheidenreich/autoresearch-trading |
 | LoopRunner | Android route planning and live run tracking app built with Expo and React Native. | https://github.com/owenheidenreich/looprunner |
 | Bullet Parka Studio | Interactive Three.js fashion configurator for a sea-urchin-inspired parka. | https://github.com/owenheidenreich/sea-urchin-parka |
+| Arduino Hardware Projects | Arduino Starter Kit circuits and display prototypes with embedded C/C++ sketches, photos, and demo videos. | https://github.com/owenheidenreich/arduino-starter-kit-challenge |
 
 ## Local Preview
 
